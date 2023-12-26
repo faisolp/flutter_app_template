@@ -1,4 +1,3 @@
-
 //LoginDemo Version 1.0
 
 import 'package:flutter/material.dart';
@@ -24,7 +23,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: <Widget>[
               FlutterLogo(size: 50.0), // Logo here
               SizedBox(height: 20),
+              
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Username',
@@ -66,15 +66,20 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 20),
               _buildButton(context, 'Login', Icons.login, () {
                 if (_formKey.currentState!.validate()) {
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
                 }
               }),
-               SizedBox(height: 40),
+              SizedBox(height: 40),
               _buildButton(context, 'Register', Icons.person_add, () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterScreen()));
               }),
               _buildButton(context, 'Forgot Password?', Icons.password, () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ForgetPasswordScreen()));
               }),
             ],
           ),
@@ -83,7 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildButton(BuildContext context, String text, IconData icon, VoidCallback onPressed) {
+  Widget _buildButton(BuildContext context, String text, IconData icon,
+      VoidCallback onPressed) {
     return Container(
       width: double.infinity,
       child: ElevatedButton.icon(
@@ -120,7 +126,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Register')),
-      body: _isRegistered ? _buildRegistrationSuccess(context) : _buildRegistrationForm(context),
+      body: _isRegistered
+          ? _buildRegistrationSuccess(context)
+          : _buildRegistrationForm(context),
     );
   }
 
@@ -206,7 +214,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Navigator.pop(context);
             },
           )
-        
         ],
       ),
     );
@@ -222,7 +229,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             icon: Icon(Icons.login),
             label: Text('Go to Login'),
             onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()));
             },
           ),
         ],
@@ -230,7 +238,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  Widget _buildButton(BuildContext context, String text, IconData icon, VoidCallback onPressed) {
+  Widget _buildButton(BuildContext context, String text, IconData icon,
+      VoidCallback onPressed) {
     return Container(
       width: double.infinity,
       child: ElevatedButton.icon(
@@ -314,19 +323,23 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('ระบบได้ส่ง link reset password ให้ที่ email เรียบร้อยแล้ว รบกวนตรวจสอบ email และกด link เพื่อดำเนินการ. หากไม่เจอ email ให้ตรวจสอบที่ junk mail.'),
+          Text(
+              'ระบบได้ส่ง link reset password ให้ที่ email เรียบร้อยแล้ว รบกวนตรวจสอบ email และกด link เพื่อดำเนินการ. หากไม่เจอ email ให้ตรวจสอบที่ junk mail.'),
           ElevatedButton.icon(
             icon: Icon(Icons.login),
             label: Text('Go to Login'),
             onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()));
             },
           ),
         ],
       ),
     );
   }
-  Widget _buildButton(BuildContext context, String text, IconData icon, VoidCallback onPressed) {
+
+  Widget _buildButton(BuildContext context, String text, IconData icon,
+      VoidCallback onPressed) {
     return Container(
       width: double.infinity,
       child: ElevatedButton.icon(

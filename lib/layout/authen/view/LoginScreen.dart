@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../../Component/SelectDropList/SelectDropList.dart';
 import '../../app/App.layout.dart';
 
 import 'ForgetPasswordScreen.dart';
@@ -14,6 +15,10 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
+  var dropListModel = DropListModel([
+    OptionItem(id: 'EPP', title: 'EPP Server'),
+  ]);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +33,14 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlutterLogo(size: 50.0), // Logo here
-              SizedBox(height: 20),
+             
+              SizedBox(height: 15),
+              SelectDropList(
+                  labelText: "Select server .. ",
+                  dropListModel: dropListModel,
+                  onOptionSelected: (item) {
+                    print(item.title);
+                  }),
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Username',
@@ -77,11 +88,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 }
               }),
               SizedBox(height: 40),
-              _buildButton(context, 'Register', Icons.person_add, () {
+              TextButton(child:Text('Register'),onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => RegisterScreen()));
               }),
-              _buildButton(context, 'Forgot Password?', Icons.password, () {
+              TextButton(child:Text('Forgot Password?'), onPressed: (){
                 Navigator.push(
                     context,
                     MaterialPageRoute(

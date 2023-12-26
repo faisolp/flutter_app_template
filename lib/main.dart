@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'AppLookup.dart';
+//import 'AppLookup.dart';
 
-//import 'layout/authen/Authen.layout.dart';
+import 'layout/authen/Authen.layout.dart';
 
 //Applications 'AppOrg.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(AuthenLayout());
 }
 
